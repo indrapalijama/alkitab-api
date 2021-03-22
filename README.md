@@ -79,9 +79,15 @@ Contributions are what make the open source community such an amazing place to b
 <!-- TO-DO List -->
 ## To-do List
 Improve API
-  - [x] Get Books Chapter Count
-  - [ ] Get All Bible Version
+  - [ ] Get List of All Book
+  - [x] Count Verses
+  - [ ] Get All Bible Version / Language
   - [ ] Add API Docs (Swaggger)
+
+<!-- SOURCE -->
+## Source
+Alkitab Mobile SABDA [http://alkitab.mobi/](http://alkitab.mobi/)
+
 
 <!-- LICENSE -->
 ## License
