@@ -11,7 +11,6 @@
 <p align="center">
   <h3 align="center">Alkitab API</h3>
   <p align="center">
-    Alkitab API (Terjemahan Baru) 
     <br />
     <a href="https://github.com/indrapalijama/alkitab-api">View Demo</a>
     ·
@@ -25,7 +24,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Alkitab API (Terjemahan Baru) built with Express.JS
+a simple Alkitab API, Indonesian version (Terjemahan Baru).
 
 
 ### Built With
