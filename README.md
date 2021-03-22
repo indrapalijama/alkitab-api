@@ -25,7 +25,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-The new way to read the news without being confused with overwhelming details.
+Alkitab API (Terjemahan Baru) built with Express.JS
 
 
 ### Built With
