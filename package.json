@@ -1,0 +1,19 @@
+{
+  "name": "alkitab-api",
+  "version": "1.0.0",
+  "description": "express.js alkitab api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alkitab"
+  ],
+  "author": "indrapalijama",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.5",
+    "express": "^4.17.1"
+  }
+}
