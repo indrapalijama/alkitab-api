@@ -36,17 +36,23 @@
                     {
                         "name": "book",
                         "in": "path",
-                        "description": "The specific book"
+                        "description": "The specific book",
+                        "type": "string",
+                        "required": true
                     },
                     {
                         "name": "chapter",
                         "in": "path",
-                        "description": "Chapter"
+                        "description": "Chapter",
+                        "type": "number",
+                        "required": true
                     },
                     {
                         "name": "version",
                         "in": "path",
-                        "description": "Book Version"
+                        "description": "Book Version",
+                        "type": "string",
+                        "required": true
                     }
                 ],
                 "produces": [
@@ -69,7 +75,9 @@
                     {
                         "name": "book",
                         "in": "path",
-                        "description": "The specific book"
+                        "description": "The specific book",
+                        "type": "string",
+                        "required": true
                     }
                 ],
                 "produces": [
