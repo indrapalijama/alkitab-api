@@ -3,6 +3,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const port = process.env.PORT || 8000;
 const app = express();
+var cors = require('cors');
 
 //documentation
 const swaggerUi = require('swagger-ui-express');
