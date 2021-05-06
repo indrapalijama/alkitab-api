@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'development') {
     swaggerDocument.host = "localhost:" + process.env.PORT
 } else {
     swaggerDocument.schemes = "https"
-    swaggerDocument.host = "https://fulk-alkitab-api.herokuapp.com:" + process.env.PORT
+    swaggerDocument.host = "fulk-alkitab-api.herokuapp.com:" + process.env.PORT
 }
 
 console.log('process.env.NODE_ENV', process.env.NODE_ENV)
