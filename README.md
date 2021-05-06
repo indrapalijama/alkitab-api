@@ -12,7 +12,7 @@
   <h3 align="center">Alkitab API</h3>
   <p align="center">
     <br />
-    <a href="https://github.com/indrapalijama/alkitab-api">View Demo</a>
+    <a href="https://fulk-alkitab-api.herokuapp.com/api/">View Demo</a>
     ·
     <a href="https://github.com/indrapalijama/alkitab-api/issues">Report Bug</a>
     ·
