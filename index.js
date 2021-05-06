@@ -8,14 +8,12 @@ const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
-if (process.env.NODE_ENV === 'development') {
-    swaggerDocument.host = "localhost:" + process.env.PORT
-} else {
-    swaggerDocument.schemes = "https"
-    swaggerDocument.host = "fulk-alkitab-api.herokuapp.com:" + process.env.PORT
-}
-
-console.log('process.env.NODE_ENV', process.env.NODE_ENV)
+// if (process.env.NODE_ENV === 'development') {
+swaggerDocument.host = "localhost:" + process.env.PORT
+// } else {
+//     swaggerDocument.schemes = "https"
+//     swaggerDocument.host = "fulk-alkitab-api.herokuapp.com:" + process.env.PORT
+// }
 
 
 //get chapter metadata
@@ -144,13 +142,14 @@ app.get('/read/:book/:chapter/:version', (req, res) => {
     })
 })
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-    next();
-});
+// app.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", '*');
+//     res.header("Access-Control-Allow-Credentials", true);
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+//     next();
+// });
+
 
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
