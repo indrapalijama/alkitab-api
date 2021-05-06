@@ -8,6 +8,13 @@ const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
+if (process.env.NODE_ENV === 'development') {
+    swaggerDocument.host = "localhost:" + process.env.PORT
+}
+// else swaggerDocument.host = "https://fulk-alkitab-api.herokuapp.com:" + process.env.PORT
+
+console.log('process.env.NODE_ENV', process.env.NODE_ENV)
+
 
 //get chapter metadata
 app.get('/find/:book', (req, res) => {
@@ -142,7 +149,7 @@ app.get('/', (req, res) => {
 })
 
 app.listen({ port }, () => {
-    console.log(`🚀 Server ready at port :${port}`);
+    console.log(`🚀 Server ready at port http://localhost:${port}`);
 });
 
 
