@@ -150,9 +150,9 @@ app.get('/read/:book/:chapter/:version', (req, res) => {
 //     next();
 // });
 
-app.configure(function () {
-    app.use(allowCrossDomain);
-});
+// app.configure(function () {
+//     app.use(allowCrossDomain);
+// });
 
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
