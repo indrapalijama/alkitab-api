@@ -79,10 +79,10 @@ Contributions are what make the open source community such an amazing place to b
 <!-- TO-DO List -->
 ## To-do List
 Improve API
+  - [x] Get Chapter Info (Verses Count)
+  - [x] Add API Docs (Swaggger)
   - [ ] Get List of All Book
-  - [x] Count Verses
   - [ ] Get All Bible Version / Language
-  - [ ] Add API Docs (Swaggger)
 
 <!-- SOURCE -->
 ## Source

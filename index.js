@@ -4,9 +4,13 @@ const cheerio = require('cheerio');
 const port = process.env.PORT || 3000;
 const app = express();
 
+//documentation
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
-//get verses count from book
-app.get('/verse/:book', (req, res) => {
+
+//get chapter metadata
+app.get('/find/:book', (req, res) => {
     var book = req.params.book;
     if (req.params.book.length > 3) {
         book = req.params.book.substring(0, 3)
@@ -33,18 +37,34 @@ app.get('/verse/:book', (req, res) => {
                 verses.push(parseInt(element.match(/\d+/g)))
             }
         });
-        return res.send(verses);
+        // return res.send(verses);
+        return res.send({
+            book: book,
+            total_verse: verses.length,
+            verses: verses
+        });
     })
 })
 
-//read bible with params (book, chapter)
-app.get('/read/:book/:chapter', (req, res) => {
+//read bible with params (book, chapter, version)
+app.get('/read/:book/:chapter/:version', (req, res) => {
     var book = req.params.book;
     var chapter = req.params.chapter;
+    var version;
+
+    if (req.params.version == 'undefined' || req.params.version == '{version}') {
+        //default version is terjemahan baru
+        version = 'tb'
+    } else {
+        version = req.params.version
+    }
+
     if (req.params.book.length > 3) {
         book = req.params.book.substring(0, 3)
     }
-    const url = 'https://alkitab.mobi/tb/' + book + '/' + chapter;
+
+    const url = 'https://alkitab.mobi/' + version + '/' + book + '/' + chapter;
+
 
     axios.get(url).then(({ data }) => {
         let $ = cheerio.load(data);
@@ -115,8 +135,10 @@ app.get('/read/:book/:chapter', (req, res) => {
     })
 })
 
+app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('404')
 })
 
 app.listen({ port }, () => {

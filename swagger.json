@@ -1,0 +1,87 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Alkitab API",
+        "description": "Simple and easy-to-use Alkitab API"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Read",
+            "description": "Read the bible based on defined book and chapter"
+        },
+        {
+            "name": "Find",
+            "description": "Find the chapter data"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/read/{book}/{chapter}/{version}": {
+            "get": {
+                "tags": [
+                    "Read"
+                ],
+                "description": "Read the bible in Bahasa Indonesia",
+                "parameters": [
+                    {
+                        "name": "book",
+                        "in": "path",
+                        "description": "The specific book"
+                    },
+                    {
+                        "name": "chapter",
+                        "in": "path",
+                        "description": "Chapter"
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "description": "Book Version"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result"
+                    }
+                }
+            }
+        },
+        "/find/{book}": {
+            "get": {
+                "tags": [
+                    "Find"
+                ],
+                "description": "Find the book data",
+                "parameters": [
+                    {
+                        "name": "book",
+                        "in": "path",
+                        "description": "The specific book"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result"
+                    }
+                }
+            }
+        }
+    }
+}
