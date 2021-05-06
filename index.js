@@ -10,8 +10,7 @@ const swaggerDocument = require('./swagger.json');
 
 if (process.env.NODE_ENV === 'development') {
     swaggerDocument.host = "localhost:" + process.env.PORT
-}
-// else swaggerDocument.host = "https://fulk-alkitab-api.herokuapp.com:" + process.env.PORT
+} else swaggerDocument.host = "https://fulk-alkitab-api.herokuapp.com:" + process.env.PORT
 
 console.log('process.env.NODE_ENV', process.env.NODE_ENV)
 

@@ -17,5 +17,8 @@
     "cheerio": "^1.0.0-rc.5",
     "express": "^4.17.1",
     "swagger-ui-express": "^4.1.6"
+  },
+  "engines": {
+    "node": "v10.23.0"
   }
 }
