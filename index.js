@@ -13,15 +13,15 @@ const swaggerDocument = require('./swagger.json');
 // swaggerDocument.host = "localhost:" + process.env.PORT
 // } else {
 // swaggerDocument.schemes = "https"
-swaggerDocument.host = "fulk-alkitab-api.herokuapp.com:" + process.env.PORT
-// swaggerDocument.host = "0.0.0.0:" + process.env.PORT
+// swaggerDocument.host = "fulk-alkitab-api.herokuapp.com:" + process.env.PORT
+swaggerDocument.host = "0.0.0.0:" + process.env.PORT
 // }
 
 app.options('*', cors()) // include before other routes
 app.use(cors());
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "fulk-alkitab-api.herokuapp.com:" + process.env.PORT); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "0.0.0.0:" + process.env.PORT); // update to match the domain you will make the request from
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
