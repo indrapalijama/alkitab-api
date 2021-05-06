@@ -17,7 +17,8 @@ if (process.env.NODE_ENV === 'development') {
     swaggerDocument.host = "0.0.0.0:" + process.env.PORT
 }
 
-
+app.options('*', cors()) // include before other routes
+app.use(cors());
 
 //get chapter metadata
 app.get('/find/:book', (req, res) => {
@@ -145,7 +146,6 @@ app.get('/read/:book/:chapter/:version', (req, res) => {
     })
 })
 
-app.use(cors());
 
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
