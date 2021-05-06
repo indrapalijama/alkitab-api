@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 const app = express();
 
 //documentation
@@ -142,7 +142,7 @@ app.get('/', (req, res) => {
 })
 
 app.listen({ port }, () => {
-    console.log(`🚀 Server ready at port http://localhost:${port}`);
+    console.log(`🚀 Server ready at port :${port}`);
 });
 
 
