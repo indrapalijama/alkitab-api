@@ -1,9 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-        "version": "1.0.0",
+        "version": "1.0.1",
         "title": "Alkitab API",
-        "description": "Simple and easy-to-use Alkitab API"
+        "description": "Alkitab API Documentation"
     },
     "tags": [
         {
@@ -24,28 +24,24 @@
                 "tags": [
                     "Read"
                 ],
-                "description": "Read the bible in Bahasa Indonesia",
+                "description": "Read the bible in Bahasa Indonesia (tb)",
                 "parameters": [
                     {
                         "name": "book",
                         "in": "path",
-                        "description": "The specific book",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "chapter",
                         "in": "path",
-                        "description": "Chapter",
                         "type": "number",
                         "required": true
                     },
                     {
                         "name": "version",
                         "in": "path",
-                        "description": "Book Version",
-                        "type": "string",
-                        "required": true
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -53,7 +49,37 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Result"
+                        "description": "Detail of Passage",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "verses": {
+                                    "type": "object",
+                                    "properties": {
+                                        "verse": {
+                                            "type": "number",
+                                            "example": 1,
+                                            "description": "Specific verse"
+                                        },
+                                        "content": {
+                                            "type": "string",
+                                            "example": "TUHAN, gembalaku yang baik",
+                                            "description": "Content of verse"
+                                        }
+                                    }
+                                },
+                                "book": {
+                                    "type": "array",
+                                    "example": "[Mazmur, TB]",
+                                    "description": "Book Chapter and Version"
+                                },
+                                "chapter": {
+                                    "type": "number",
+                                    "example": 23,
+                                    "description": "Book chapter"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -68,7 +94,6 @@
                     {
                         "name": "book",
                         "in": "path",
-                        "description": "The specific book",
                         "type": "string",
                         "required": true
                     }
@@ -78,10 +103,27 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Detailed Book Data"
-                    },
-                    "500": {
-                        "description": "Error! Please check your input"
+                        "description": "Detailed Book Data",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "book": {
+                                    "type": "string",
+                                    "example": "Kejadian",
+                                    "description": "The specific passage"
+                                },
+                                "total_verse": {
+                                    "type": "number",
+                                    "example": 3,
+                                    "description": "Verses Count"
+                                },
+                                "verses": {
+                                    "type": "array",
+                                    "example": "[1,2,3]",
+                                    "description": "Array of verses"
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -3,29 +3,18 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const port = process.env.PORT || 8000;
 const app = express();
-var cors = require('cors');
 
 //documentation
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
-// app.use(cors());
-
+//heroku config
 if (process.env.NODE_ENV === 'development') {
     swaggerDocument.host = "localhost:" + process.env.PORT;
 } else {
     swaggerDocument.schemes = "https";
-    // swaggerDocument.host = "fulk-alkitab-api.herokuapp.com"; //heroku app name
     swaggerDocument.host = process.env.APP_NAME + ".herokuapp.com"; //heroku app name
 }
-
-// app.options('*', cors()) // include before other routes
-
-// app.use(function (req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "fulk-alkitab-api.herokuapp.com:" + process.env.PORT); // update to match the domain you will make the request from
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
 
 //get chapter metadata
 app.get('/find/:book', (req, res) => {
@@ -153,8 +142,13 @@ app.get('/read/:book/:chapter/:version', (req, res) => {
     })
 })
 
-
-app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+var options = {
+    customCss: '.swagger-ui .topbar { display: none }',
+    customSiteTitle: "Alkitab API",
+    customfavIcon: "/assets/favicon.ico"
+};
+app.use('/assets', express.static('assets'));
+app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
 app.get('/', (req, res) => {
     res.send('404')
