@@ -22,6 +22,7 @@ app.get('/find/:book', (req, res) => {
     if (req.params.book.length > 3) {
         book = req.params.book.substring(0, 3)
     }
+    book = book.charAt(0).toUpperCase() + book.slice(1)
     const url = 'https://alkitab.mobi/tb/' + book;
     axios.get(url).then(({ data }) => {
         let $ = cheerio.load(data);
