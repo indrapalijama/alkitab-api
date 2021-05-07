@@ -5,7 +5,6 @@
         "title": "Alkitab API",
         "description": "Simple and easy-to-use Alkitab API"
     },
-    "basePath": "/",
     "tags": [
         {
             "name": "Read",
@@ -85,7 +84,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Result"
+                        "description": "Detailed Book Data"
+                    },
+                    "500": {
+                        "description": "Error! Please check your input"
                     }
                 }
             }
