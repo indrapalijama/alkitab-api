@@ -9,14 +9,14 @@ var cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
-console.log(process.env.NODE_ENV)
-app.use(cors());
+// app.use(cors());
+
 if (process.env.NODE_ENV === 'development') {
     swaggerDocument.host = "localhost:" + process.env.PORT;
 } else {
     swaggerDocument.schemes = "https";
-    // swaggerDocument.host = "fulk-alkitab-api.herokuapp.com";
-    swaggerDocument.host = "0.0.0.0"
+    // swaggerDocument.host = "fulk-alkitab-api.herokuapp.com"; //heroku app name
+    swaggerDocument.host = process.env.APP_NAME + ".herokuapp.com"; //heroku app name
 }
 
 // app.options('*', cors()) // include before other routes
