@@ -12,11 +12,11 @@ const swaggerDocument = require('./swagger.json');
 console.log(process.env.NODE_ENV)
 app.use(cors());
 if (process.env.NODE_ENV === 'development') {
-    swaggerDocument.host = "localhost:" + process.env.PORT
+    swaggerDocument.host = "localhost:" + process.env.PORT;
 } else {
-    swaggerDocument.schemes = "https"
-    swaggerDocument.host = "fulk-alkitab-api.herokuapp.com"
-    // swaggerDocument.host = "0.0.0.0:" + process.env.PORT
+    swaggerDocument.schemes = "https";
+    // swaggerDocument.host = "fulk-alkitab-api.herokuapp.com";
+    swaggerDocument.host = "0.0.0.0"
 }
 
 // app.options('*', cors()) // include before other routes
