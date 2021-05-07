@@ -10,16 +10,16 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
 console.log(process.env.NODE_ENV)
+app.use(cors());
 if (process.env.NODE_ENV === 'development') {
     swaggerDocument.host = "localhost:" + process.env.PORT
 } else {
-    // swaggerDocument.schemes = "https"
-    swaggerDocument.host = "fulk-alkitab-api.herokuapp.com:" + process.env.PORT
-    // swaggerDocument.host = "0.0.0.0:" + process.env.PORT
+    swaggerDocument.schemes = "https"
+    // swaggerDocument.host = "fulk-alkitab-api.herokuapp.com:" + process.env.PORT
+    swaggerDocument.host = "0.0.0.0:" + process.env.PORT
 }
 
 // app.options('*', cors()) // include before other routes
-// app.use(cors());
 
 // app.use(function (req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "fulk-alkitab-api.herokuapp.com:" + process.env.PORT); // update to match the domain you will make the request from
