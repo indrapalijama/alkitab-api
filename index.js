@@ -143,7 +143,7 @@ app.get('/read/:book/:chapter/:version', (req, res) => {
     })
 })
 
-//renungan
+//daily reflection
 app.get('/renungan/:source', (req, res) => {
     let from;
     var source = req.params.source; //sh, rh
@@ -195,7 +195,7 @@ app.get('/renungan/:source', (req, res) => {
 
 var options = {
     customCss: '.swagger-ui .topbar { display: none }',
-    customSiteTitle: "Alkitab API",
+    customSiteTitle: "Alkitab API ❤️",
     customfavIcon: "/assets/favicon.ico"
 };
 app.use('/assets', express.static('assets'));

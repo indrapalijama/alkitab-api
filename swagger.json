@@ -3,7 +3,7 @@
     "info": {
         "version": "1.0.3",
         "title": "Alkitab API",
-        "description": "API Documentation"
+        "description": "API Documentation for Alkitab and Daily Reflection"
     },
     "tags": [
         {
@@ -144,7 +144,7 @@
                         "in": "path",
                         "type": "string",
                         "required": true,
-                        "description": "Available source are sh (santapan harian) and rh (renungan harian)"
+                        "description": "sh (santapan harian) and rh (renungan harian)"
                     }
                 ],
                 "produces": [
