@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "version": "1.0.2",
+        "version": "1.0.3",
         "title": "Alkitab API",
         "description": "API Documentation"
     },
@@ -13,6 +13,10 @@
         {
             "name": "Find",
             "description": "Find the chapter data"
+        },
+        {
+            "name": "Renungan",
+            "description": "Read the today's Reflection"
         }
     ],
     "schemes": [
@@ -121,6 +125,51 @@
                                     "type": "array",
                                     "example": "[1,2,3]",
                                     "description": "Array of verses"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/renungan/{source}": {
+            "get": {
+                "tags": [
+                    "Renungan"
+                ],
+                "description": "Read the daily reflection",
+                "parameters": [
+                    {
+                        "name": "source",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Available source are sh (santapan harian) and rh (renungan harian)"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Today's Reflection",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "source": {
+                                    "type": "string",
+                                    "example": "Renungan Harian",
+                                    "description": "Reflection's Source"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "example": "Menabur benih Firman Tuhan",
+                                    "description": "Reflection's Title"
+                                },
+                                "conent": {
+                                    "type": "string",
+                                    "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                                    "description": "Reflection's Content"
                                 }
                             }
                         }

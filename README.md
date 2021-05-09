@@ -24,13 +24,14 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-a simple Alkitab API, Indonesian version (Terjemahan Baru).
+Simple Alkitab API using expressJS, scrapped from mentioned source.
 
 
-### Built With
+### Tech Stack
 
 * [Express JS](https://github.com/expressjs/express)
-* [Love](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+* [CheerioJS](https://cheerio.js.org)
+* [Swagger](https://swagger.io)
 
 
 
@@ -81,6 +82,7 @@ Contributions are what make the open source community such an amazing place to b
 Improve API
   - [x] Get Chapter Info (Verses Count)
   - [x] Add API Docs (Swaggger)
+  - [x] Add Daily Reflection (Renungan Harian / Santapan Harian)
   - [ ] Get List of All Book
   - [ ] Get All Bible Version / Language
 

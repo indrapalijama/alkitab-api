@@ -143,6 +143,56 @@ app.get('/read/:book/:chapter/:version', (req, res) => {
     })
 })
 
+//renungan
+app.get('/renungan/:source', (req, res) => {
+    let from;
+    var source = req.params.source; //sh, rh
+
+    switch (req.params.source) {
+        case 'sh':
+            from = 'Santapan Harian'
+            break;
+
+        case 'rh':
+            from = 'Renungan Harian'
+            break;
+
+        //roc beda layout untuk scrapping
+        // case 'roc':
+        //     from = 'Renungan Oswald Chambers'
+        //     break;
+
+        default:
+            from = 'Source Not Defined'
+            break;
+    }
+    const url = 'https://alkitab.mobi/renungan/' + source;
+    axios.get(url).then(({ data }) => {
+        let $ = cheerio.load(data);
+        var title = [];
+        var body = [];
+        $('div').filter((i, el) => {
+            let data = $(el);
+            let strong = data.find('strong').first().text();
+            let p = data.find('p').text().split(strong)[1];
+            title.push(strong);
+            body.push(p);
+        })
+        var filteredTitle = title.filter(function (el) {
+            return el != '';
+        });
+        var filteredBody = body.filter(function (el) {
+            return el != undefined;
+        });
+        var content = filteredBody[0].split('* * *')[0]
+        return res.send({
+            source: from,
+            title: filteredTitle[0],
+            content: content
+        });
+    })
+})
+
 var options = {
     customCss: '.swagger-ui .topbar { display: none }',
     customSiteTitle: "Alkitab API",
