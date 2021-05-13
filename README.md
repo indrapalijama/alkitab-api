@@ -12,7 +12,7 @@
   <h3 align="center">Alkitab API</h3>
   <p align="center">
     <br />
-    <a href="https://fulk-alkitab-api.herokuapp.com/api/">View Demo</a>
+    <a href="https://fulk-alkitab-api.herokuapp.com">View Demo</a>
     ·
     <a href="https://github.com/indrapalijama/alkitab-api/issues">Report Bug</a>
     ·
@@ -83,8 +83,10 @@ Improve API
   - [x] Get Chapter Info (Verses Count)
   - [x] Add API Docs (Swaggger)
   - [x] Add Daily Reflection (Renungan Harian / Santapan Harian)
+  - [ ] Add New Source for Daily Reflection (Renungan Oswald Chambers)
   - [ ] Get List of All Book
   - [ ] Get All Bible Version / Language
+  - [ ] Get Kidung Jemaat, Pelengkap Kidung Jemaat, or other music source
 
 <!-- SOURCE -->
 ## Source

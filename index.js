@@ -3,10 +3,12 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const port = process.env.PORT || 8000;
 const app = express();
+const path = require('path');
 
 //documentation
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+
 
 //heroku config
 if (process.env.NODE_ENV === 'development') {
@@ -61,7 +63,7 @@ app.get('/read/:book/:chapter/:version', (req, res) => {
     var version;
 
     if (req.params.version == 'undefined' || req.params.version == '{version}') {
-        //default version is terjemahan baru
+        //default version (terjemahan baru)
         version = 'tb'
     } else {
         version = req.params.version
@@ -157,11 +159,6 @@ app.get('/renungan/:source', (req, res) => {
             from = 'Renungan Harian'
             break;
 
-        //roc beda layout untuk scrapping
-        // case 'roc':
-        //     from = 'Renungan Oswald Chambers'
-        //     break;
-
         default:
             from = 'Source Not Defined'
             break;
@@ -171,28 +168,40 @@ app.get('/renungan/:source', (req, res) => {
         let $ = cheerio.load(data);
         var title = [];
         var body = [];
+        var passage = [];
+
+        //begin cheerio scrapping
         $('div').filter((i, el) => {
             let data = $(el);
             let strong = data.find('strong').first().text();
-            let p = data.find('p').text().split(strong)[1];
             title.push(strong);
-            body.push(p);
+            passage.push(data.find('p').text().split(strong)[0])
+            body.push(data.find('p').text().split(strong)[1]);
         })
+
+        //filter out the undefined or empty string values
         var filteredTitle = title.filter(function (el) {
             return el != '';
         });
         var filteredBody = body.filter(function (el) {
             return el != undefined;
         });
+        var filteredPassage = passage.filter(function (el) {
+            return el != undefined;
+        });
         var content = filteredBody[0].split('* * *')[0]
+
+        //return the data back
         return res.send({
             source: from,
             title: filteredTitle[0],
+            passage: source == 'sh' ? filteredPassage[0].split('Bacaan:')[1].trim() : filteredPassage[0].split('Bacaan Setahun:')[1].split('Nas')[0],
             content: content
         });
     })
 })
 
+//swagger settings
 var options = {
     customCss: '.swagger-ui .topbar { display: none }',
     customSiteTitle: "Alkitab API ❤️",
@@ -201,12 +210,12 @@ var options = {
 app.use('/assets', express.static('assets'));
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
+//settings port and welcome page
 app.get('/', (req, res) => {
-    res.send('404')
+    res.sendFile(path.join(__dirname + '/index.html'));
 })
-
 app.listen({ port }, () => {
-    console.log(`🚀 Server ready at port http://localhost:${port}`);
+    console.log(`🚀 Server ready at http://localhost:${port}`);
 });
 
 

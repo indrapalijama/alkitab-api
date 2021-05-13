@@ -144,7 +144,7 @@
                         "in": "path",
                         "type": "string",
                         "required": true,
-                        "description": "sh (santapan harian) and rh (renungan harian)"
+                        "description": "sh (santapan harian) / rh (renungan harian)"
                     }
                 ],
                 "produces": [
@@ -166,7 +166,12 @@
                                     "example": "Menabur benih Firman Tuhan",
                                     "description": "Reflection's Title"
                                 },
-                                "conent": {
+                                "passage": {
+                                    "type": "string",
+                                    "example": "Mazmur 3:20",
+                                    "description": "Reflection's Passage"
+                                },
+                                "content": {
                                     "type": "string",
                                     "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                                     "description": "Reflection's Content"
